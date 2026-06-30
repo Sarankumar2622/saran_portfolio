@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Menu, X } from 'lucide-react';
+import { Download, Sun, Moon, Menu, X } from 'lucide-react';
+import resumePdf from '../image/Sarankumar.pdf';
 
 const Header: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -30,6 +31,7 @@ const Header: React.FC = () => {
   const navLinks = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
+    { name: 'Experience', href: '#experience' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
@@ -38,29 +40,36 @@ const Header: React.FC = () => {
   return (
     <header
       className={`fixed w-full py-4 z-50 transition-all duration-300 ${isScrolled
-          ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-lg'
-          : 'bg-transparent'
+        ? 'bg-white/90 dark:bg-gray-950/90 backdrop-blur-md shadow-lg shadow-slate-900/5'
+        : 'bg-transparent'
         }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <a
           href="#home"
-          className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+          className="text-2xl font-bold bg-gradient-to-r from-cyan-500 via-emerald-500 to-rose-500 bg-clip-text text-transparent"
         >
-          TECH<span className="text-blue-600 dark:text-blue-400">FOLIO</span>
+          SARAN<span className="text-emerald-600 dark:text-emerald-400">DEV</span>
         </a>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden lg:flex items-center space-x-6">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
             >
               {link.name}
             </a>
           ))}
+          <a
+            href={resumePdf}
+            download
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 via-emerald-500 to-rose-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-emerald-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-500/30"
+          >
+            <Download className="h-4 w-4" />
+            Download CV
+          </a>
           <button
             onClick={() => setDarkMode(!darkMode)}
             className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
@@ -74,8 +83,7 @@ const Header: React.FC = () => {
           </button>
         </nav>
 
-        {/* Mobile Navigation */}
-        <div className="md:hidden flex items-center">
+        <div className="lg:hidden flex items-center">
           <button
             onClick={() => setDarkMode(!darkMode)}
             className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors mr-2"
@@ -101,20 +109,28 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-lg py-4 px-4 animate-fadeIn">
+        <div className="lg:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-950 shadow-lg py-4 px-4 animate-fadeIn">
           <nav className="flex flex-col space-y-4">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2"
+                className="text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.name}
               </a>
             ))}
+            <a
+              href={resumePdf}
+              download
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 via-emerald-500 to-rose-500 px-4 py-3 text-sm font-semibold text-white shadow-lg"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <Download className="h-4 w-4" />
+              Download CV
+            </a>
           </nav>
         </div>
       )}
