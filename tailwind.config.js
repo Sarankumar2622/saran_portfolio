@@ -14,7 +14,7 @@ export default {
         'reverse-spinSlow': "reverse-spinSlow 15s linear infinite",
       },
 
-      
+
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },

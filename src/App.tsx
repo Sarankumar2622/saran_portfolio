@@ -10,7 +10,7 @@ import './styles/animations.css';
 
 function App() {
   useEffect(() => {
-    document.title = "Arun Kumar | React Native Developer";
+    document.title = "Sarankumar M | React Native Developer | MERN Stack";
   }, []);
 
   return (

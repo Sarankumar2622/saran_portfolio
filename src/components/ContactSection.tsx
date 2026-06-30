@@ -44,32 +44,32 @@ const ContactSection: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-  
+
     emailjs.send(
       'service_ju3ybxq',
       'template_7wsag62',
       formData, // { name, email, subject, message }
       '6m9L1GAajeJwchpL4'
     )
-    .then(() => {
-      setIsSubmitting(false);
-      setSubmitMessage("Your message has been sent successfully!");
-      setFormData({ name: "", email: "", subject: "", message: "" });
-      setTimeout(() => setSubmitMessage(""), 3000);
-    })
-    .catch((error) => {
-      setIsSubmitting(false);
-      console.error("Email sending error:", error);
-      setSubmitMessage("Something went wrong. Please try again.");
-      setTimeout(() => setSubmitMessage(""), 3000);
-    });
+      .then(() => {
+        setIsSubmitting(false);
+        setSubmitMessage("Your message has been sent successfully!");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setTimeout(() => setSubmitMessage(""), 3000);
+      })
+      .catch((error) => {
+        setIsSubmitting(false);
+        console.error("Email sending error:", error);
+        setSubmitMessage("Something went wrong. Please try again.");
+        setTimeout(() => setSubmitMessage(""), 3000);
+      });
   };
 
   const contactInfo = [
     {
       icon: <Mail className="h-6 w-6 text-blue-600 dark:text-blue-400" />,
       title: "Email",
-      value: "sarankumar2622@gmail.com.com",
+      value: "sarankumar2622@gmail.com",
       link: "mailto:sarankumar2622@gmail.com",
     },
     {
@@ -81,7 +81,7 @@ const ContactSection: React.FC = () => {
     {
       icon: <MapPin className="h-6 w-6 text-blue-600 dark:text-blue-400" />,
       title: "Location",
-      value: "Chennai",
+      value: "Chennai, Tamil Nadu",
       link: null,
     },
   ];

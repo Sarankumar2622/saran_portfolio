@@ -37,9 +37,9 @@ const ProjectsSection: React.FC = () => {
     return () => {
       animateElements?.forEach((el) => observer.unobserve(el));
     };
-  }, []);
+  }, [visibleProjects]);
 
-  const categories = ['all', 'mobile', 'web', 'backend'];
+  const categories = ['all', 'mobile', 'web'];
 
   // For debugging
   console.log('Active filter:', activeFilter);
@@ -62,24 +62,23 @@ const ProjectsSection: React.FC = () => {
             and technologies in my development arsenal.
           </p>
         </div>
-{/* 
+
         <div className="flex justify-center mb-8 animate-on-scroll opacity-0">
           <div className="flex flex-wrap gap-2 md:gap-4">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveFilter(category)}
-                className={`px-4 py-2 rounded-full capitalize transition-all duration-300 ${
-                  activeFilter === category
-                    ? 'bg-blue-600 text-white shadow-md'
-                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-                }`}
+                className={`px-4 py-2 rounded-full capitalize transition-all duration-300 ${activeFilter === category
+                  ? 'bg-blue-600 text-white shadow-md'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                  }`}
               >
                 {category}
               </button>
             ))}
           </div>
-        </div> */}
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {visibleProjects.length === 0 ? (

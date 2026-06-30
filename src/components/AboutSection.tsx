@@ -50,8 +50,8 @@ const AboutSection: React.FC = () => {
               </div>
               <div className="absolute -bottom-5 -right-5 w-24 h-24 bg-blue-600 rounded-lg flex items-center justify-center shadow-lg">
                 <p className="text-white text-center">
-                  <span className="block text-2xl font-bold">6+</span>
-                  <span className="text-sm">Month Exp.</span>
+                  <span className="block text-2xl font-bold">1.5+</span>
+                  <span className="text-sm">Years Exp.</span>
                 </p>
               </div>
             </div>
@@ -59,43 +59,39 @@ const AboutSection: React.FC = () => {
 
           <div className="animate-on-scroll opacity-0">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              React Native Developer
+              React Native & Full-Stack Developer
             </h3>
             <p className="text-gray-700 dark:text-gray-300 mb-6">
-            I'm a dedicated React Native developer with 6+ month of experience building cross-platform mobile applications. My journey began with web development, but I quickly fell in love with the power and flexibility of React Native for creating native mobile experiences.
+              I am a dedicated React Native and Full-Stack Developer with 1.5+ years of professional experience building and deploying scalable cross-platform mobile applications for Android and iOS, as well as responsive web applications.
             </p>
             <p className="text-gray-700 dark:text-gray-300 mb-6">
-            Throughout my career, I've worked with startups and established companies to build innovative mobile solutions that solve real-world problems. I'm passionate about clean code, performance optimization, and creating intuitive user interfaces.
-            When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or sharing my knowledge with the developer community through blog posts and meetups.
-
+              Throughout my career, I've worked on diverse platforms ranging from B2B Dental Clinic platforms and B2C Travel Booking systems, to Healthcare platforms, Matrimony platforms, and HRMS applications. I am highly proficient in React Native, React.js, Node.js, Express.js, Socket.io, Firebase, and databases like MongoDB, MySQL, and MS SQL.
             </p>
             <p className="text-gray-700 dark:text-gray-300 mb-6">
-              I love solving complex problems and delivering high-quality, user-friendly 
-              applications. My approach combines technical excellence with a keen eye for design 
-              and user experience.
+              I am passionate about clean component architecture, performance optimization, real-time communication (Socket.io, WebRTC), and delivering seamless, user-centric digital solutions.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
               <div className="flex items-center">
                 <MapPin className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-2" />
-                <span className="text-gray-700 dark:text-gray-300">Chennai</span>
+                <span className="text-gray-700 dark:text-gray-300">Chennai, Tamil Nadu</span>
               </div>
               <div className="flex items-center">
                 <Briefcase className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-2" />
-                <span className="text-gray-700 dark:text-gray-300">6 Month In Kodukku Classfields Private Limited</span>
+                <span className="text-gray-700 dark:text-gray-300">Amudhalakshmi Systems (2025 - Present)</span>
+              </div>
+              <div className="flex items-center">
+                <Briefcase className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-2" />
+                <span className="text-gray-700 dark:text-gray-300">Kodukku Classifieds (2024 - 2025)</span>
               </div>
               <div className="flex items-center">
                 <GraduationCap className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-2" />
-                <span className="text-gray-700 dark:text-gray-300">M.C.A Computer Application - 2024</span>
+                <span className="text-gray-700 dark:text-gray-300">M.C.A (Salem) – 2024</span>
               </div>
               <div className="flex items-center">
                 <GraduationCap className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-2" />
-                <span className="text-gray-700 dark:text-gray-300">B.Sc. Mathematics – 2019</span>
+                <span className="text-gray-700 dark:text-gray-300">B.Sc. Mathematics (Vellore) – 2022</span>
               </div>
-              {/* <div className="flex items-center">
-                <Award className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-2" />
-                <span className="text-gray-700 dark:text-gray-300">AWS Certified Developer</span>
-              </div> */}
             </div>
 
             <a

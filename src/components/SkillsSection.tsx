@@ -3,46 +3,41 @@ import React, { useEffect, useRef } from "react";
 interface Skill {
   name: string;
   level: number;
-  category: "Core Technologies" | "Additional Skills" | "Other Relevant Skills";
+  category: "Core Technologies" | "Front-End Skills" | "Back-End Skills" | "Other Relevant Skills";
 }
 
 const SkillsSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const skills: Skill[] = [
-    { name: "React Native", level: 95, category: "Front-End Skills" },
-    { name: "React.js", level: 95, category: "Front-End Skills" },
-    { name: "Bootstrap", level: 90, category: "Front-End Skills" },
-    { name: "Material-UI", level: 91, category: "Front-End Skills" },
-    { name: "JavaScript", level: 90, category: "Core Technologies" },
-    { name: "TypeScript", level: 80, category: "Core Technologies" },
-    { name: "Redux", level: 90, category: "Core Technologies" },
+    // Core Technologies
+    { name: "React Native", level: 95, category: "Core Technologies" },
+    { name: "React.js", level: 92, category: "Core Technologies" },
+    { name: "TypeScript", level: 85, category: "Core Technologies" },
+    { name: "JavaScript (ES6+)", level: 90, category: "Core Technologies" },
+    { name: "Redux Toolkit", level: 90, category: "Core Technologies" },
+    { name: "RESTful APIs", level: 95, category: "Core Technologies" },
+    { name: "Core Python", level: 70, category: "Core Technologies" },
+
+    // Front-End Skills
+    { name: "HTML5 / CSS3", level: 90, category: "Front-End Skills" },
+    { name: "Material-UI", level: 85, category: "Front-End Skills" },
+    { name: "Component-Based Architecture", level: 90, category: "Front-End Skills" },
+
+    // Back-End Skills
     { name: "Node.js", level: 90, category: "Back-End Skills" },
-    { name: "MongoDB", level: 90, category: "Back-End Skills" },
-    { name: "MySQL", level: 90, category: "Back-End Skills" },
     { name: "Express.js", level: 90, category: "Back-End Skills" },
-    { name: "RESTful APIs", level: 80, category: "Core Technologies" },
-    { name: "GraphQL", level: 75, category: "Additional Skills" },
-    { name: "HTML/CSS", level: 90, category: "Front-End Skills" },
-    { name: "jQuery", level: 90, category: "Front-End Skills" },
-    { name: "Git", level: 80, category: "Other Relevant Skills" },
-    { name: "Firebase", level: 70, category: "Other Relevant Skills" },
-    // {
-    //   name: "App Store Deployment",
-    //   level: 70,
-    //   category: "Other Relevant Skills",
-    // },
-    // { name: "Google Play Store", level: 70, category: "Other Relevant Skills" },
-    {
-      name: "Push Notifications",
-      level: 70,
-      category: "Other Relevant Skills",
-    },
-    {
-      name: "Performance Optimization",
-      level: 80,
-      category: "Other Relevant Skills",
-    },
+    { name: "Socket.io", level: 90, category: "Back-End Skills" },
+    { name: "WebRTC", level: 75, category: "Back-End Skills" },
+    { name: "JWT Authentication", level: 85, category: "Back-End Skills" },
+
+    // Other Relevant Skills
+    { name: "MongoDB", level: 88, category: "Other Relevant Skills" },
+    { name: "MySQL / MS SQL", level: 85, category: "Other Relevant Skills" },
+    { name: "Prisma ORM", level: 80, category: "Other Relevant Skills" },
+    { name: "Firebase (Auth, Firestore, FCM)", level: 88, category: "Other Relevant Skills" },
+    { name: "Git & GitHub", level: 90, category: "Other Relevant Skills" },
+    { name: "Postman & Swagger", level: 85, category: "Other Relevant Skills" },
   ];
 
   useEffect(() => {
@@ -55,9 +50,8 @@ const SkillsSection: React.FC = () => {
             const progressBars = entry.target.querySelectorAll(".progress-bar");
             progressBars.forEach((bar, index) => {
               setTimeout(() => {
-                (bar as HTMLElement).style.width = `${
-                  (bar as HTMLElement).dataset.width
-                }%`;
+                (bar as HTMLElement).style.width = `${(bar as HTMLElement).dataset.width
+                  }%`;
               }, 100 * index);
             });
           }

@@ -47,12 +47,14 @@
 }
 
 /* Hover animation for links */
-a, button {
+a,
+button {
   position: relative;
   transition: all 0.3s ease;
 }
 
-a::after, button::after {
+a::after,
+button::after {
   content: '';
   position: absolute;
   width: 0;

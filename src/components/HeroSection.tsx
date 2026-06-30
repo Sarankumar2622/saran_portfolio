@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Github as GitHub, Linkedin, Mail, FileText } from "lucide-react";
-import profilePic from "../image/profile.jpg";
-import pdf from "../image/Arunkumar.pdf"
+import profilePic from "../image/profile(2).jpeg";
+import pdf from "../image/Sarankumar.pdf"
 
 const HeroSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -14,17 +14,17 @@ const HeroSection: React.FC = () => {
   // Handle the 3D card effect for profile picture
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
-    
+
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    
+
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    
+
     const rotateX = (y - centerY) / 10;
     const rotateY = (centerX - x) / 10;
-    
+
     setMousePosition({ x: rotateY, y: rotateX });
   };
 
@@ -54,14 +54,10 @@ const HeroSection: React.FC = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
-    
+
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Create particles
-    const particlesArray: Particle[] = [];
-    const numberOfParticles = 100;
-    
     class Particle {
       x: number;
       y: number;
@@ -69,36 +65,36 @@ const HeroSection: React.FC = () => {
       speedX: number;
       speedY: number;
       color: string;
-      
+
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
         this.size = Math.random() * 5 + 1;
         this.speedX = Math.random() * 1 - 0.5;
         this.speedY = Math.random() * 1 - 0.5;
-        
+
         // Create a color palette based on theme
         const colors = ['#3b82f6', '#8b5cf6', '#ec4899', '#06b6d4'];
         this.color = colors[Math.floor(Math.random() * colors.length)];
       }
-      
+
       update() {
         // Move particles
         this.x += this.speedX;
         this.y += this.speedY;
-        
+
         // Wrap around edges
         if (this.x > canvas.width) this.x = 0;
         else if (this.x < 0) this.x = canvas.width;
-        
+
         if (this.y > canvas.height) this.y = 0;
         else if (this.y < 0) this.y = canvas.height;
-        
+
         // Interactive with cursor
         const dx = this.x - cursorPosition.x;
         const dy = this.y - cursorPosition.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        
+
         if (distance < 100) {
           const angle = Math.atan2(dy, dx);
           const force = (100 - distance) / 10;
@@ -106,7 +102,7 @@ const HeroSection: React.FC = () => {
           this.y += Math.sin(angle) * force;
         }
       }
-      
+
       draw() {
         if (!ctx) return;
         ctx.beginPath();
@@ -116,26 +112,30 @@ const HeroSection: React.FC = () => {
         ctx.fill();
       }
     }
-    
+
+    // Create particles
+    const particlesArray: Particle[] = [];
+    const numberOfParticles = 100;
+
     // Initialize particles
     for (let i = 0; i < numberOfParticles; i++) {
       particlesArray.push(new Particle());
     }
-    
+
     // Animation loop
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
+
       // Draw connections between particles
       ctx.strokeStyle = 'rgba(120, 120, 240, 0.1)';
       ctx.lineWidth = 0.5;
-      
+
       for (let i = 0; i < particlesArray.length; i++) {
         for (let j = i; j < particlesArray.length; j++) {
           const dx = particlesArray[i].x - particlesArray[j].x;
           const dy = particlesArray[i].y - particlesArray[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          
+
           if (distance < 120) {
             ctx.beginPath();
             ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
@@ -145,20 +145,20 @@ const HeroSection: React.FC = () => {
           }
         }
       }
-      
+
       // Update and draw particles
       for (let i = 0; i < particlesArray.length; i++) {
         particlesArray[i].update();
         particlesArray[i].draw();
       }
-      
+
       // Draw 3D grid effect
       const gridSize = 50;
       const gridDepth = 5;
-      
+
       ctx.strokeStyle = 'rgba(100, 100, 255, 0.1)';
       ctx.lineWidth = 0.5;
-      
+
       // Horizontal lines with perspective
       for (let y = 0; y < canvas.height; y += gridSize) {
         ctx.beginPath();
@@ -168,7 +168,7 @@ const HeroSection: React.FC = () => {
         }
         ctx.stroke();
       }
-      
+
       // Vertical lines with perspective
       for (let x = 0; x < canvas.width; x += gridSize) {
         ctx.beginPath();
@@ -178,12 +178,12 @@ const HeroSection: React.FC = () => {
         }
         ctx.stroke();
       }
-      
+
       requestAnimationFrame(animate);
     };
-    
+
     animate();
-    
+
     return () => {
       window.removeEventListener('resize', resizeCanvas);
     };
@@ -214,21 +214,23 @@ const HeroSection: React.FC = () => {
     {
       name: "GitHub",
       icon: <GitHub className="h-5 w-5" />,
-      href:"https://github.com/arunkumar02002", 
+      href: "https://github.com/Sarankumar2622",
     },
     {
       name: "LinkedIn",
       icon: <Linkedin className="h-5 w-5" />,
-      href:"https://www.linkedin.com/in/arun-kumar-b9aaa4330/",
+      href: "https://www.linkedin.com/in/sarankumar-m-15188b260/",
     },
     {
       name: "Email",
       icon: <Mail className="h-5 w-5" />,
-      href: "mailto:arunmichael2002@email.com",
+      href: "mailto:sarankumar2622@gmail.com",
     },
-    { name: "Resume", icon: <FileText className="h-5 w-5" />,
+    {
+      name: "Resume", icon: <FileText className="h-5 w-5" />,
       href: `${pdf}`, // path to your PDF file
-      target: "_blank",        },
+      target: "_blank",
+    },
   ];
 
   return (
@@ -238,21 +240,21 @@ const HeroSection: React.FC = () => {
       className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16"
     >
       {/* Canvas-based 3D interactive background */}
-      <canvas 
-        ref={canvasRef} 
+      <canvas
+        ref={canvasRef}
         className="absolute inset-0 z-0 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800"
       />
-      
+
       {/* Floating 3D elements */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {/* 3D Floating geometric shapes */}
         <div className="absolute w-64 h-64 -top-10 -right-10 bg-blue-500/10 dark:bg-blue-500/5 rounded-3xl transform rotate-12 animate-float backdrop-blur-3xl"></div>
         <div className="absolute w-72 h-72 bottom-32 -left-20 bg-purple-500/10 dark:bg-purple-500/5 rounded-full transform -rotate-12 animate-float animation-delay-2000 backdrop-blur-3xl"></div>
         <div className="absolute w-80 h-80 top-1/3 right-1/4 bg-pink-500/10 dark:bg-pink-500/5 rounded-lg transform rotate-45 animate-float animation-delay-4000 backdrop-blur-3xl"></div>
-        
+
         {/* Bokeh light effects */}
         {Array.from({ length: 20 }).map((_, index) => (
-          <div 
+          <div
             key={index}
             className="absolute rounded-full bg-gradient-to-r from-blue-400 to-purple-400 dark:from-blue-600 dark:to-purple-600 blur-xl"
             style={{
@@ -267,7 +269,7 @@ const HeroSection: React.FC = () => {
             }}
           />
         ))}
-        
+
         {/* Animated gradient rings */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-20 pointer-events-none">
           <div className="absolute inset-0 rounded-full border-[2px] border-blue-400/30 dark:border-blue-500/30 animate-spinSlow"></div>
@@ -285,16 +287,16 @@ const HeroSection: React.FC = () => {
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 animate-slideInLeft animation-delay-300">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
-                Sarankumar
+                Sarankumar M
               </span>
             </h1>
             <h2 className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-6 animate-slideInLeft animation-delay-500">
-              React Native Developer
+              React Native & MERN Stack Developer
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-xl animate-slideInLeft animation-delay-700">
-              I build exceptional mobile applications with React Native and
-              create robust backends using Node.js, Express and MongoDB. Let's
-              turn your ideas into reality.
+              I have 1.5+ years of experience building scalable cross-platform mobile
+              applications for Android & iOS with React Native, and creating robust
+              backends using Node.js, Express, and MongoDB. Let's turn your ideas into reality.
             </p>
 
             <div className="flex flex-wrap gap-4 animate-slideInLeft animation-delay-900">
@@ -332,7 +334,7 @@ const HeroSection: React.FC = () => {
 
         <div className="w-full md:w-1/2 flex justify-center animate-on-scroll opacity-0">
           {/* Enhanced 3D Tilt Card Effect with lighting */}
-          <div 
+          <div
             ref={cardRef}
             className="relative w-[280px] h-[280px] md:w-[360px] md:h-[360px] flex items-center justify-center perspective-1000"
             onMouseMove={handleMouseMove}
@@ -344,24 +346,24 @@ const HeroSection: React.FC = () => {
           >
             {/* Glowing effects around the profile */}
             <div className="absolute inset-[-60px] rounded-full bg-blue-500/10 dark:bg-blue-500/20 blur-3xl animate-pulse"></div>
-            
+
             {/* Rotating orbital elements */}
             <div className="absolute inset-[-10px] rounded-full border-[6px] border-dashed border-blue-400/30 dark:border-blue-700/30 animate-spinSlow z-0" />
             <div className="absolute inset-[-30px] rounded-full border-[2px] border-purple-300/30 dark:border-purple-500/30 animate-reverse-spinSlow" />
             <div className="absolute inset-[-50px] rounded-full border-[1px] border-pink-300/20 dark:border-pink-500/20 animate-spinSlow animation-delay-2000" />
 
             {/* Enhanced 3D Profile Card with depth */}
-            <div 
+            <div
               className="relative z-10 w-full h-full rounded-full shadow-2xl transition-all duration-200 ease-out transform-gpu"
               style={{
-                transform: isHovering 
-                  ? `rotateX(${mousePosition.y}deg) rotateY(${mousePosition.x}deg) scale3d(1.05, 1.05, 1.05)` 
+                transform: isHovering
+                  ? `rotateX(${mousePosition.y}deg) rotateY(${mousePosition.x}deg) scale3d(1.05, 1.05, 1.05)`
                   : 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
                 backgroundImage: 'linear-gradient(140deg, #3b82f6, #8b5cf6, #ec4899)',
                 padding: '6px',
-                boxShadow: isHovering 
+                boxShadow: isHovering
                   ? `0 25px 50px -12px rgba(0, 0, 0, 0.4), 
-                     ${mousePosition.x/5}px ${mousePosition.y/5}px 30px rgba(79, 70, 229, 0.4)`
+                     ${mousePosition.x / 5}px ${mousePosition.y / 5}px 30px rgba(79, 70, 229, 0.4)`
                   : '0 20px 25px -5px rgba(0, 0, 0, 0.2)'
               }}
             >
@@ -376,71 +378,71 @@ const HeroSection: React.FC = () => {
                   alt="Developer"
                   className="w-full h-full object-cover rounded-full transition-transform duration-500 hover:scale-110"
                   style={{
-                    transform: isHovering 
-                      ? `translateX(${-mousePosition.x/10}px) translateY(${-mousePosition.y/10}px)` 
+                    transform: isHovering
+                      ? `translateX(${-mousePosition.x / 10}px) translateY(${-mousePosition.y / 10}px)`
                       : 'translateX(0) translateY(0)'
                   }}
                 />
               </div>
-              
+
               {/* 3D lighting and reflection effects */}
-              <div 
+              <div
                 className="absolute inset-0 rounded-full bg-gradient-to-br from-white/30 to-transparent transition-opacity duration-300"
-                style={{ 
+                style={{
                   opacity: isHovering ? 0.6 : 0,
-                  transform: `translateX(${-mousePosition.x/2}px) translateY(${-mousePosition.y/2}px)` 
+                  transform: `translateX(${-mousePosition.x / 2}px) translateY(${-mousePosition.y / 2}px)`
                 }}
               />
-              
+
               {/* Subtle inner glow effect */}
-              <div 
+              <div
                 className="absolute inset-[6px] rounded-full"
                 style={{
-                  boxShadow: isHovering 
-                    ? `inset ${-mousePosition.x/10}px ${-mousePosition.y/10}px 20px rgba(255,255,255,0.2)` 
+                  boxShadow: isHovering
+                    ? `inset ${-mousePosition.x / 10}px ${-mousePosition.y / 10}px 20px rgba(255,255,255,0.2)`
                     : 'inset 0 0 0 rgba(255,255,255,0)'
                 }}
               />
             </div>
-            
+
             {/* Enhanced floating tech badges with perspective */}
-            <div 
+            <div
               className="absolute -top-4 -right-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-float animation-delay-1000"
               style={{
-                transform: isHovering 
-                  ? `translateX(${-mousePosition.x/5}px) translateY(${-mousePosition.y/5}px) scale(1.05)` 
+                transform: isHovering
+                  ? `translateX(${-mousePosition.x / 5}px) translateY(${-mousePosition.y / 5}px) scale(1.05)`
                   : 'translateX(0) translateY(0) scale(1)'
               }}
             >
-              Android Developer
+              iOS & Android
             </div>
-            <div 
+            <div
               className="absolute -bottom-4 -right-4 bg-gradient-to-r from-green-500 to-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-float animation-delay-2000"
               style={{
-                transform: isHovering 
-                  ? `translateX(${-mousePosition.x/7}px) translateY(${-mousePosition.y/7}px) scale(1.05)` 
+                transform: isHovering
+                  ? `translateX(${-mousePosition.x / 7}px) translateY(${-mousePosition.y / 7}px) scale(1.05)`
                   : 'translateX(0) translateY(0) scale(1)'
               }}
             >
               Node.js
             </div>
-            <div 
+            <div
               className="absolute -bottom-4 -left-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-float"
               style={{
-                transform: isHovering 
-                  ? `translateX(${-mousePosition.x/6}px) translateY(${-mousePosition.y/6}px) scale(1.05)` 
+                transform: isHovering
+                  ? `translateX(${-mousePosition.x / 6}px) translateY(${-mousePosition.y / 6}px) scale(1.05)`
                   : 'translateX(0) translateY(0) scale(1)'
               }}
             >
-              Android Studio
+              MERN Stack
             </div>
-            
+
             {/* New tech badge with different position */}
-            <div 
+            <div
               className="absolute -top-4 -left-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-float animation-delay-3000"
               style={{
-                transform: isHovering 
-                  ? `translateX(${-mousePosition.x/8}px) translateY(${-mousePosition.y/8}px) scale(1.05)` 
+                transform: isHovering
+                  ? `translateX(${-mousePosition.x / 8}px) translateY(${-mousePosition.y / 8}px) scale(1.05)`
                   : 'translateX(0) translateY(0) scale(1)'
               }}
             >
@@ -449,7 +451,7 @@ const HeroSection: React.FC = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Animated scroll indicator */}
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
         <div className="w-8 h-12 rounded-full border-2 border-blue-500 dark:border-blue-400 flex justify-center">
